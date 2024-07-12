@@ -4,16 +4,15 @@ import animais.AnimalCachorro;
 import animais.AnimalGato;
 import animais.AnimalLeao;
 
+import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
-        if (args.length < 2) {
-            System.out.println("Uso: java Principal <tipo_autenticado> <tipo_animal>");
-            return;
-        }
+        Scanner scanner = new Scanner(System.in);
 
-        String tipoAutenticado = args[0].toLowerCase();
-        String tipoAnimal = args[1].toLowerCase();
+        System.out.print("Digite o tipo de animal: ");
+        String tipoAnimal = scanner.nextLine().toLowerCase();
 
         Animal animal;
 
@@ -32,7 +31,7 @@ public class Main {
         }
 
         Autenticador autenticador = new Autenticador();
-        if (autenticador.autenticar(animal, tipoAutenticado)) {
+        if (autenticador.autenticar(tipoAnimal)) {
             animal.emitirSom();
         } else {
             System.out.println("Animal não autenticado!");
